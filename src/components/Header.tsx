@@ -13,8 +13,6 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  // InboxIcon,
-  // MailIcon,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -72,7 +70,6 @@ const Header = () => {
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
               <ListItemIcon><Icon>menu</Icon></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -82,7 +79,6 @@ const Header = () => {
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
-              {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
               <ListItemIcon><Icon>menu</Icon></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
