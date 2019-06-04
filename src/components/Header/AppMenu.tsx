@@ -1,12 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
-  Typography,
   IconButton,
   Icon,
-  Grid,
   Drawer,
   List,
   ListItem,
@@ -14,6 +11,7 @@ import {
   ListItemText,
   Divider,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   list: {
@@ -24,8 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-
-const Header = () => {
+const AppMenu: React.FC = () => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -66,7 +63,6 @@ const Header = () => {
         onClick={toggleDrawer(side, false)}
         onKeyDown={toggleDrawer(side, false)}
       >
-
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
@@ -89,23 +85,20 @@ const Header = () => {
   );
 
   return (
-    <AppBar>
-      <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="Menu" onClick={toggleDrawer('left', true)}>
-          <Icon>menu</Icon>
-        </IconButton>
-        <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+    <>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="Menu"
+        onClick={toggleDrawer('left', true)}
+      >
+        <Icon>menu</Icon>
+      </IconButton>
+      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
-        <Grid container justify="space-between" alignItems="center">
-          <Typography variant="h5" color="inherit">domube</Typography>
-          <IconButton edge="end" color="inherit" aria-label="Menu">
-            <Icon>more_vert</Icon>
-          </IconButton>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+    </>
   );
 }
-  
-export default Header;
+
+export default AppMenu;
