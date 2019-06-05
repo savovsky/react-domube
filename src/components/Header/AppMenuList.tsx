@@ -26,9 +26,15 @@ const useStyles = makeStyles({
   },
 });
 
+// interface Eho {
+//   isOpen: boolean,
+//   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+// };
+
 const AppMenuList: React.FC = () => {
   const classes = useStyles();
   const { isOpen, setIsOpen }: any = useContext(Context);
+  // TODO create inteface for 'any'
 
   return (
     <>
