@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { navLinks } from '../../common/navLinks';
 import Context from './context/drawerContext';
+import toggleDrawer from './fixtures/toggleDrawer';
 
 
 const useStyles = makeStyles({
@@ -29,37 +30,22 @@ const AppMenuList: React.FC = () => {
   const classes = useStyles();
   const { isOpen, setIsOpen }: any = useContext(Context);
 
-  const toggleDrawer = (event?: React.KeyboardEvent | React.MouseEvent) => {
-
-    if (
-      event && event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div>
+    <>
       <AppBar position="static" color="primary">
         <Toolbar>
         <Grid container justify="flex-end" alignItems="center">
-          <IconButton color="inherit" aria-label="Menu" onClick={(e) => toggleDrawer(e)}>
+          <IconButton color="inherit" aria-label="Menu" onClick={(e) => toggleDrawer(isOpen, setIsOpen, e)}>
             <Icon>arrow_back</Icon>
           </IconButton>
           </Grid>
         </Toolbar>
       </AppBar>
-
-
       <div
         className={classes.list}
         role="presentation"
-        onClick={(e) => toggleDrawer(e)}
-        onKeyDown={(e) => toggleDrawer(e)}
+        onClick={(e) => toggleDrawer(isOpen, setIsOpen, e)}
+        onKeyDown={(e) => toggleDrawer(isOpen, setIsOpen, e)}
       >
         <List>
           {navLinks.map((item) => (
@@ -70,7 +56,7 @@ const AppMenuList: React.FC = () => {
           ))}
         </List>
       </div>
-    </div>
+    </>
   );
 }
 
