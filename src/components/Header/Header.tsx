@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Grid, Box } from '@material-ui/core';
 
 import AppMenu from './AppMenu';
 import UserMenu from './UserMenu';
+import NavTabs from './NavTabs';
 
 
 const Header: React.FC = () => {
@@ -23,6 +24,7 @@ const Header: React.FC = () => {
           </Box>
         </Grid>
       </Toolbar>
+      <NavTabs />
     </AppBar>
   );
 }
