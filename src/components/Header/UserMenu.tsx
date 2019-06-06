@@ -1,19 +1,47 @@
-import React from 'react';
-import { IconButton, Icon, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { IconButton, Icon, Typography, Menu, ListItemIcon, ListItemText } from '@material-ui/core';
+
+import { StyledListItem } from '../styledMuiComponents';
+import { userLinks } from '../../common/userLinks';
 
 const UserMenu: React.FC = () => {
-	return (
-		<>
-			<Typography variant="subtitle1">User</Typography>
-			<IconButton
-				edge="end"
-				color="inherit"
-				aria-label="Menu"
-			>
-				<Icon>more_vert</Icon>
-			</IconButton>
-		</>
-	);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+
+  return (
+    <>
+      <Typography variant="subtitle1">Address</Typography>
+      <IconButton
+        edge="end"
+        color="inherit"
+        aria-label="Menu"
+        onClick={handleClick}
+      >
+        <Icon>more_vert</Icon>
+      </IconButton>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        {userLinks.map((item) => (
+          <StyledListItem button onClick={handleClose} key={item.link}>
+            <ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+            <ListItemText primary={item.link} />
+          </StyledListItem>
+        ))}
+      </Menu>
+    </>
+  );
 }
 
 export default UserMenu;
