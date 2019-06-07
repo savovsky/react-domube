@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Grid, Box } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Grid, Box, Hidden, Paper } from '@material-ui/core';
 
 import AppMenu from './AppMenu';
 import UserMenu from './UserMenu';
@@ -13,8 +13,10 @@ const Header: React.FC = () => {
         <Grid container justify="space-between">
           <Box>
             <Grid container justify="flex-start" alignItems="center">
-              <AppMenu />
-              <Typography variant="h5">domube</Typography>
+              <Hidden only={['sm', 'md', 'lg', 'xl']}>
+                <AppMenu />
+              </Hidden>
+              <Typography variant="h6">domube</Typography>
             </Grid>
           </Box>
           <Box>
@@ -24,7 +26,16 @@ const Header: React.FC = () => {
           </Box>
         </Grid>
       </Toolbar>
-      <NavTabs />
+      <Hidden only={['sm', 'md', 'lg', 'xl']}>
+        <Paper square>
+          <Box p={1}>
+            <Typography  align="center" color="primary" variant="subtitle1">Address</Typography>
+          </Box>
+        </Paper>
+      </Hidden>
+      <Hidden only={'xs'}>
+        <NavTabs />
+      </Hidden>
     </AppBar>
   );
 }

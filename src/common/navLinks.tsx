@@ -15,5 +15,15 @@ export const navLinks: Link[] = [
     link: 'Users',
     routerLink: '/users',
     icon: 'group'
+  },
+  {
+    link: 'Forms',
+    routerLink: '/users',
+    icon: 'not_listed_location'
+  },
+  {
+    link: 'Chat',
+    routerLink: '/chat',
+    icon: 'forum'
   }
 ];
