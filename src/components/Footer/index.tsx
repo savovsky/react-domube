@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Hidden, BottomNavigation, BottomNavigationAction, Icon } from '@material-ui/core';
+import { Hidden, BottomNavigation, BottomNavigationAction, Icon, Box, Divider } from '@material-ui/core';
 
 import { footerLinks } from '../../common/footerLinks';
 
@@ -23,7 +23,8 @@ const Footer: React.FC = () => {
   return (
     <>
       <Hidden only={['sm', 'md', 'lg', 'xl']}>
-        <div className={classes.stickToBottom}>
+        <Box className={classes.stickToBottom}>
+          <Divider />
           <BottomNavigation
             value={value}
             onChange={(event, newValue) => {
@@ -35,7 +36,7 @@ const Footer: React.FC = () => {
               <BottomNavigationAction key={item.link} label={item.link} icon={<Icon>{item.icon}</Icon>} />
             ))}
           </BottomNavigation>
-        </div >
+        </Box>
         );
       </Hidden>
     </>
