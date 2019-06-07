@@ -10,21 +10,19 @@ const AppMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <Context.Provider value={{ isOpen, setIsOpen }}>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="Menu"
-          onClick={(e) => toggleDrawer(isOpen, setIsOpen, e)}
-        >
-          <Icon>menu</Icon>
-        </IconButton>
-        <Drawer open={isOpen} onClose={() => toggleDrawer(isOpen, setIsOpen)}>
-            <AppMenuList />
-        </Drawer>
-      </Context.Provider>
-    </>
+    <Context.Provider value={{ isOpen, setIsOpen }}>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="Menu"
+        onClick={(e) => toggleDrawer(isOpen, setIsOpen, e)}
+      >
+        <Icon>menu</Icon>
+      </IconButton>
+      <Drawer open={isOpen} onClose={() => toggleDrawer(isOpen, setIsOpen)}>
+        <AppMenuList />
+      </Drawer>
+    </Context.Provider>
   );
 }
 

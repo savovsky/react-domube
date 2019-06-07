@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconButton, Icon, Typography, Menu, ListItemIcon, ListItemText } from '@material-ui/core';
+import { IconButton, Icon, Typography, Menu, ListItemIcon, ListItemText, Hidden } from '@material-ui/core';
 
 import { StyledListItem } from '../styledMuiComponents';
 import { userLinks } from '../../common/userLinks';
@@ -17,7 +17,9 @@ const UserMenu: React.FC = () => {
 
   return (
     <>
-      <Typography variant="subtitle1">Address</Typography>
+      <Hidden only={'xs'}>
+        <Typography variant="subtitle1">Address</Typography>
+      </Hidden>
       <IconButton
         edge="end"
         color="inherit"
